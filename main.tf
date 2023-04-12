@@ -39,7 +39,7 @@ resource "azurerm_subnet" "YugaByte-SubNet" {
   name                 = "${var.prefix}${var.cluster_name}-Subnet-${format("%d", count.index + 1)}"
   resource_group_name  = azurerm_resource_group.YugaByte-Group.name
   virtual_network_name = azurerm_virtual_network.YugaByte-Network.name
-  address_prefix       = "10.0.${count.index + 1}.0/24"
+  address_prefixes     = ["10.0.${count.index + 1}.0/24"]
 }
 
 # Create public IPs
