@@ -32,3 +32,9 @@ output "YEDIS" {
   sensitive = false
   value     = "redis-cli -h ${azurerm_public_ip.YugaByte_Public_IP[0].ip_address} -p 6379"
 }
+
+output "nodes" {
+  sensitive = false
+  description = "Detail the node name and private IP addresses"
+  value = { for node in azurerm_virtual_machine.YugaByte-Node : node.name => node.address_prefixes }
+}
