@@ -36,5 +36,5 @@ output "YEDIS" {
 output "nodes" {
   sensitive = false
   description = "Detail the node name and private IP addresses"
-  value = { for node in azurerm_virtual_machine.YugaByte-Node : node.name => node.address_prefixes }
+  value = { for node in azurerm_virtual_machine.YugaByte-Node : node.name => node.private_ip_address }
 }
