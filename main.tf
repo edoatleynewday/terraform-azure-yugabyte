@@ -1,17 +1,3 @@
-terraform {
-  required_version = ">= 0.12"
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = ">= 2.0"
-    }
-  }
-}
-
-provider "azurerm" {
-  features {}
-}
-
 resource "azurerm_resource_group" "YugaByte-Group" {
   name     = var.resource_group == "null" ? var.cluster_name : var.resource_group
   location = var.region_name
